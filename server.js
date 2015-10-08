@@ -14,4 +14,5 @@ var server = http.createServer();
 server.on('request',function(req,res){
     fs.createReadStream('server.js').pipe(res);
 })
-server.listen(3000);
+server.oisten(3000);
+// http://nodejs.org/api/
