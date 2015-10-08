@@ -1,0 +1,13 @@
+var path = require('path'));
+path.normalize('/this//is/apath/../../path');
+path.join('this','is','/a/','path');
+path.resove('/this','is/what','../.','a','path');
+path.isAbsolute('/path');
+path.relative('/this/is/a/','/path');
+path.dirname('/this/is/a/path');
+path.pasename('/this/is/a/path/test.txt','.txt');
+path.extname('path.txt');
+path.sep;
+'/this/is/a/path'.split(path.sep);
+path.parse('/this/is/a/path/test.txt');
+path.format({dir:'this/is',base:'file.txt'});
