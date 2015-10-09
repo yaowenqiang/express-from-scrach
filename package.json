@@ -1,0 +1,20 @@
+{
+  "name": "node_from_scratch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "args.js",
+  "dependencies": {
+    "express": "^4.13.3",
+    "gulp-nodemon": "^2.0.4"
+  },
+  "devDependencies": {
+    "express": "^4.13.3",
+    "gulp": "^3.9.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
