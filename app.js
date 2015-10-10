@@ -1,15 +1,23 @@
 var express = require('express'),
-    mongoose = require('mongoose');
+    mongoose = require('mongoose'),
+    bodyParser = require('body-parser');
 
 var db = mongoose.connect('mongodb://192.168.1.107:27017/bookapi/');
 var Book = require('./models/bookModel');
 var app = express();
 
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
 var bookRouter = express.Router();
 
 
 
 bookRouter.route('/books')
+    .post(function(req,res){{
+        var book = new Book(req.body);
+        console.log(book);
+        res.send(book);
+    }})
     .get(function (req, res) {
         var query = {};
         if (req.query.genre) {
