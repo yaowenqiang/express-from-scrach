@@ -1,16 +1,22 @@
 var express = require('express'),
     mongoose = require('mongoose');
 
-var db = mongoose.connect('mongodb://192.168.1.114:27017/bookapi/');
+var db = mongoose.connect('mongodb://192.168.1.107:27017/bookapi/');
 var Book = require('./models/bookModel');
 var app = express();
 
 var bookRouter = express.Router();
 
 
+
 bookRouter.route('/books')
     .get(function (req, res) {
-        Book.find(function (err, books) {
+
+        var query = {};
+        if (req.query.genre) {
+            query.genre = req.query.genre;
+        }
+        Book.find(query, function (err, books) {
             if (err) {
                 //                console.log(err);
                 res.status(500).send(err);
