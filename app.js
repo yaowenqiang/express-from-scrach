@@ -11,7 +11,6 @@ var bookRouter = express.Router();
 
 bookRouter.route('/books')
     .get(function (req, res) {
-
         var query = {};
         if (req.query.genre) {
             query.genre = req.query.genre;
@@ -31,7 +30,17 @@ bookRouter.route('/books')
             res.json(responseJson);
             */
     });
-
+bookRouter.route('/books/:bookId')
+    .get(function (req, res) {
+        Book.findById(req.params.bookId, function (err, book) {
+            if (err) {
+                //                console.log(err);
+                res.status(500).send(err);
+            } else {
+                res.json(book);
+            }
+        });
+    });
 app.use('/api', bookRouter);
 
 app.get('/', function (req, res) {
