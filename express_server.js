@@ -3,7 +3,17 @@ var express = require('express');
     app = express();
 app.use(bodyParser.urlencoded({extended:true}));
 var names = [];
-app.get('/',function(req,res){
+function log(req,res,next){
+    console.log(names);
+    next();
+}
+app.all('/',function(req,res,next){
+    console.log('from ALL');
+    next();
+    //res.send('testingt all');
+});
+//app.get('/',function(req,res,next){console.log(names);next();},function(req,res){
+app.get('/',log,function(req,res){
     //res.send('hello world! how are you?');
     res.render('index.jade',{ names:names });
 })
