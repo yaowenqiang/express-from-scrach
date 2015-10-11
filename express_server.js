@@ -1,7 +1,15 @@
 var express = require('express');
-var app = express();
-app.get('',function(req,res){
-    res.send('hello world! how are you?');
+    bodyParser = require('body-parser');
+    app = express();
+app.use(bodyParser.urlencoded({extended:true}));
+var names = [];
+app.get('/',function(req,res){
+    //res.send('hello world! how are you?');
+    res.render('index.jade',{ names:names });
+})
+app.post('/',function(req,res){
+    names.push(req.body.name);;
+    res.redirect('/');
 })
 app.listen(3000);
 //useful modules:
