@@ -2,7 +2,7 @@ var express = require('express'),
     mongoose = require('mongoose'),
     bodyParser = require('body-parser');
 
-var db = mongoose.connect('mongodb://192.168.1.107:27017/bookapi/');
+var db = mongoose.connect('mongodb://192.168.1.109:27017/bookapi/');
 var Book = require('./models/bookModel');
 var app = express();
 
