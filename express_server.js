@@ -45,6 +45,15 @@ function log(req,res,next){
     console.log(names);
     next();
 }
+
+app.param('name',function(req,res,next,name){
+    //req.name = name[0].toUpperCase() + name.substring(1);
+    req.params.name = name.toUpperCase();
+    next();
+})
+app.get('/name/:name',function(req,res){
+   res.send('Your name is ' + req.params.name);
+});
 app.all('/',function(req,res,next){
     console.log('from ALL');
     next();
