@@ -54,6 +54,15 @@ var routes = function (Book) {
                 }
             });
         })
+        .delete(function(req,res){
+            req.book.remove(function(err){
+                if(err){
+                    res.status(500).send(err);
+                } else {
+                     res.status(204).send('removed');
+                }
+            });
+        })
         .put(function(req,res){
             req.book.title = req.body.title;
             req.book.author = req.body.author;
