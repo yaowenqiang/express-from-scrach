@@ -28,6 +28,18 @@ var express = require('express');
     //app.enabled();
     //app.disabled();
 app.use(bodyParser.urlencoded({extended:true}));
+// custom middle
+app.use(function(req,res,next){
+    console.log('this will log all req and res');
+    next();
+});
+
+//TODO
+//build-8in middleware
+//app.use(express.static('./public'));
+
+//middleware
+//https://github.com/senchalabs/connect/
 var names = [];
 function log(req,res,next){
     console.log(names);
