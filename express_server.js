@@ -1,6 +1,32 @@
 var express = require('express');
     bodyParser = require('body-parser');
     app = express();
+    app.set('env','development');// process.env.node_env,default ,undefined
+    app.enable('trust proxy');
+    app.set('jsonp callback name','callback');// callback is the default
+    app.set('json replacer',function(attr,val){
+        if(attr === 'passwordhash') {
+            return undefined;
+        }
+        return val.toUpperCase();
+    });
+
+    app.enable('case sensitive routing'); // /hello  /Helllo
+    app.enable('strict routing');// this will treat path with / and without / the same thing,i.e,/user/ == /user
+    app.enable('view cache');
+
+    app.set('view engine','jade');//if set view engine ,the render method doesn't need  to set the file extension,i.e,res.render('index);,
+    //app.set('views','templates');// view folder name
+    app.set('x-powered-by');// enabled default
+
+    //JSON.stringify({},fn);
+
+    //app.set();
+    //app.enable();
+    //app.disable();
+    //app.get();
+    //app.enabled();
+    //app.disabled();
 app.use(bodyParser.urlencoded({extended:true}));
 var names = [];
 function log(req,res,next){
