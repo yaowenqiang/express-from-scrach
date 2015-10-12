@@ -79,6 +79,47 @@ app.get('/ejs',log,function(req,res){
     res.render('index.ejs',{ title:"hello,this is from ejs" });
 })
 app.post('/',function(req,res){
+    //req.params
+    //req.query
+    //req.body
+    //req.params('attr');
+    //req.originalUrl;
+    //req.cookies;
+    //req.get();// any header name
+    //req.accepts();
+    //req.accepts('/text/html');
+    //req.ip;
+    //req.protocol;
+    //req.secure;
+
+    res.status();
+    res.set(header,name);// header
+    res.get(header);
+    res.cookie(name,value);
+    res.clearCookie(name);
+    res.redirect(status,path);
+    res.send(status,text);
+    res.json(status,object);
+    res.jsonp(status,object);
+    res.download(filePath);
+    res.render(file,params);
+    res.render(file,params,function(err,html){
+    //res.format(object);
+        res.format({
+            'text/plain':function(){
+
+            },
+            'text/html':function(){
+
+            },
+            'application/json':function(){
+
+            }
+        });
+        // do something with the html
+    });
+
+
     names.push(req.body.name);;
     res.redirect('/');
 })
