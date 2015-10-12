@@ -59,6 +59,12 @@ app.all('/',function(req,res,next){
     next();
     //res.send('testingt all');
 });
+//app.route()
+    //.get()
+    //.post()
+    //.delete()
+    //.put()
+    //.all()
 //app.get('/',function(req,res,next){console.log(names);next();},function(req,res){
 app.get('/',log,function(req,res){
     //res.send('hello world! how are you?');
