@@ -82,7 +82,20 @@ app.post('/',function(req,res){
     names.push(req.body.name);;
     res.redirect('/');
 })
+//var router = express.Router(function(){
+    //caseSensitive:false,
+    //strict:true
+//});
+
+// router.user();
+// router.get();
+// router.route();
+var APIv1 = require('./APIv1'),
+    APIv2 = require('./APIv2');
+app.use('/api/v1',APIv1);
+app.use('/api/v2',APIv2);
 app.listen(3000);
+// app.user('/',router);
 //useful modules:
 //express,nodemon,mocha,grunt-js,gulp,bower,karma,yo,q
 //browsenpm.org/package.json
